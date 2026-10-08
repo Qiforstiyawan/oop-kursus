@@ -1,0 +1,34 @@
+@startuml
+!include skin.iuml
+title Bagian 2: Class dan Object
+
+class Instructor {
+  +name : String
+  +expertise : String
+  --
+  +Instructor(name : String, expertise : String)
+  +getName() : String
+  +getExpertise() : String
+  +getInfo() : String
+}
+
+class OnlineCourse {
+  +code : String
+  +title : String
+  +year : int
+  +available : boolean
+  --
+  +OnlineCourse(code : String, title : String, year : int)
+  +getCode() : String
+  +getTitle() : String
+  +getYear() : int
+  +isAvailable() : boolean
+  +takeSeat() : boolean
+  +releaseSeat() : void
+}
+
+note bottom of OnlineCourse
+  available = true berarti masih ada kursi kosong.
+  Kursus baru langsung tersedia.
+end note
+@enduml

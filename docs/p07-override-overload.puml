@@ -1,0 +1,74 @@
+@startuml
+!include skin.iuml
+title Bagian 6: Overriding dan Overloading
+
+class Course {
+  #title : String
+  #year : int
+  -available : boolean
+  -extraWeeks : int
+  --
+  +Course(title : String, year : int)
+  +durationWeeks() : int
+  +describe() : String
+  +toString() : String
+  +extendEnrollment() : void
+  +extendEnrollment(weeks : int) : void
+  +getTotalWeeks() : int
+}
+
+class OnlineCourse {
+  -code : String
+  -instructor : Instructor
+  --
+  +OnlineCourse(code : String, title : String, year : int)
+  +OnlineCourse(code : String, title : String, year : int, instructor : Instructor)
+  +durationWeeks() : int
+  +describe() : String
+}
+
+class OfflineCourse {
+  -room : String
+  --
+  +OfflineCourse(title : String, year : int, room : String)
+  +durationWeeks() : int
+  +describe() : String
+}
+
+class Workshop {
+  -seats : int
+  --
+  +Workshop(title : String, year : int, seats : int)
+  +Workshop(title : String, year : int)
+  +getSeats() : int
+}
+
+Course <|-- OnlineCourse
+Course <|-- OfflineCourse
+Course <|-- Workshop
+
+note right of Course
+  durationWeeks() = 2
+  extendEnrollment() menambah 4 minggu
+  extendEnrollment(weeks) menolak weeks <= 0
+  getTotalWeeks() = durationWeeks() + semua perpanjangan
+  describe() = "title (year)"
+  toString() = describe()
+end note
+
+note bottom of OnlineCourse
+  durationWeeks() = 6
+  describe() = super.describe() + " by " + nama pengajar
+  (atau "TBA" jika belum ada)
+end note
+
+note bottom of OfflineCourse
+  durationWeeks() = 10
+  describe() = super.describe() + " [room " + room + "]"
+end note
+
+note bottom of Workshop
+  TIDAK meng-override durationWeeks() maupun describe().
+  Workshop(title, year) memberi seats = 20.
+end note
+@enduml

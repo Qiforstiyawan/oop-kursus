@@ -1,0 +1,87 @@
+@startuml
+!include skin.iuml
+title Bagian 4: Relasi Class
+
+class Classroom <<buat kelas ini>> {
+  -code : String
+  -courses : OnlineCourse[5]
+  -count : int
+  --
+  +Classroom(code : String)
+  +getCode() : String
+  +getCourseCount() : int
+  +addCourse(course : OnlineCourse) : boolean
+  +findByCode(code : String) : OnlineCourse
+  +countAvailable() : int
+}
+
+class Registrar <<buat kelas ini>> {
+  --
+  +enroll(student : Student, course : OnlineCourse) : boolean
+  +drop(student : Student, course : OnlineCourse) : boolean
+}
+
+class OnlineCourse {
+  -code : String
+  -title : String
+  -year : int
+  -available : boolean
+  -instructor : Instructor
+  --
+  +OnlineCourse(code : String, title : String, year : int)
+  +getCode() : String
+  +getTitle() : String
+  +setTitle(title : String) : void
+  +getYear() : int
+  +setYear(year : int) : void
+  +isAvailable() : boolean
+  +takeSeat() : boolean
+  +releaseSeat() : void
+  +getInstructor() : Instructor
+  +setInstructor(instructor : Instructor) : void
+}
+
+class Student {
+  -studentId : String
+  -name : String
+  -courseCount : int
+  -card : StudentCard
+  --
+  +Student(studentId : String, name : String)
+  +getStudentId() : String
+  +getName() : String
+  +setName(name : String) : void
+  +getCourseCount() : int
+  +getCard() : StudentCard
+  +canEnroll() : boolean
+  +addEnrollment() : boolean
+  +removeEnrollment() : boolean
+}
+
+class Instructor {
+  -name : String
+  -expertise : String
+  --
+  +Instructor(name : String, expertise : String)
+  +getName() : String
+  +getExpertise() : String
+  +getInfo() : String
+}
+
+class StudentCard <<buat kelas ini>> {
+  -number : String
+  --
+  +StudentCard(number : String)
+  +getNumber() : String
+}
+
+Classroom o-- "0..5" OnlineCourse : agregasi
+Registrar ..> Student : dependensi
+Registrar ..> OnlineCourse : dependensi
+OnlineCourse "*" --> "0..1" Instructor : asosiasi
+Student "1" *-- "1" StudentCard : komposisi\n(dibuat di constructor)
+
+note bottom of StudentCard
+  nomor kartu = "SC-" + studentId
+end note
+@enduml

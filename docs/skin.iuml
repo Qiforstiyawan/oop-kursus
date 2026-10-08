@@ -1,0 +1,15 @@
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam roundCorner 8
+skinparam defaultFontSize 15
+skinparam ArrowColor #1D4ED8
+skinparam ClassBorderColor #1D4ED8
+skinparam ClassBackgroundColor white
+skinparam ClassFontColor #111827
+skinparam ClassStereotypeFontColor #1D4ED8
+skinparam NoteBackgroundColor #FFF4F4
+skinparam NoteBorderColor #DC2626
+skinparam NoteFontColor #111827
+skinparam titleFontSize 16
+hide circle

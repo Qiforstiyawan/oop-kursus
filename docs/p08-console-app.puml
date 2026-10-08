@@ -1,0 +1,60 @@
+@startuml
+!include skin.iuml
+title Bagian 7: Aplikasi Konsol
+
+class Main {
+  +{static} main(args : String[]) : void
+}
+
+class AcademyApp <<buat kelas ini>> {
+  -academy : Academy
+  -in : Scanner
+  -out : PrintStream
+  --
+  +AcademyApp(academy : Academy, in : Scanner, out : PrintStream)
+  +run() : void
+}
+
+class Academy <<buat kelas ini>> {
+  -name : String
+  -courses : Course[20]
+  -courseCount : int
+  -students : Student[10]
+  -studentCount : int
+  --
+  +Academy(name : String)
+  +getName() : String
+  +addCourse(course : Course) : boolean
+  +addStudent(student : Student) : boolean
+  +getCourses() : Course[]
+  +getStudents() : Student[]
+  +findCourseByTitle(title : String) : Course
+  +findStudent(studentId : String) : Student
+  +searchByKeyword(keyword : String) : Course[]
+  +enroll(studentId : String, title : String) : boolean
+  +drop(studentId : String, title : String) : boolean
+}
+
+class Course
+class Student
+class OnlineCourse
+class OfflineCourse
+class Workshop
+
+Main ..> Academy : dependensi
+Main ..> AcademyApp : dependensi
+AcademyApp "1" --> "1" Academy : asosiasi
+AcademyApp ..> Course : dependensi
+AcademyApp ..> Student : dependensi
+Academy o-- "0..20" Course : agregasi
+Academy o-- "0..10" Student : agregasi
+Course <|-- OnlineCourse
+Course <|-- OfflineCourse
+Course <|-- Workshop
+
+note right of Course
+  Isi lengkap: lihat diagram Bagian 6.
+  Main dan AcademyApp juga memakai OnlineCourse,
+  OfflineCourse, dan Workshop untuk membuat objek.
+end note
+@enduml

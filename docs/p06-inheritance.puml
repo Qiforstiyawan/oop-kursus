@@ -1,0 +1,58 @@
+@startuml
+!include skin.iuml
+title Bagian 5: Inheritance
+
+class Course <<buat kelas ini>> {
+  #title : String
+  #year : int
+  -available : boolean
+  --
+  +Course(title : String, year : int)
+  +getTitle() : String
+  +setTitle(title : String) : void
+  +getYear() : int
+  +setYear(year : int) : void
+  +isAvailable() : boolean
+  +takeSeat() : boolean
+  +releaseSeat() : void
+}
+
+class OnlineCourse {
+  -code : String
+  -instructor : Instructor
+  --
+  +OnlineCourse(code : String, title : String, year : int)
+  +getCode() : String
+  +getInstructor() : Instructor
+  +setInstructor(instructor : Instructor) : void
+}
+
+class OfflineCourse <<buat kelas ini>> {
+  -room : String
+  --
+  +OfflineCourse(title : String, year : int, room : String)
+  +getRoom() : String
+}
+
+class Workshop <<buat kelas ini>> {
+  -seats : int
+  --
+  +Workshop(title : String, year : int, seats : int)
+  +getSeats() : int
+}
+
+Course <|-- OnlineCourse
+Course <|-- OfflineCourse
+Course <|-- Workshop
+
+note bottom of OnlineCourse
+  title, year, available, dan method
+  umumnya dipindah ke Course.
+  super(title, year) di baris pertama constructor.
+end note
+
+note right of Course
+  title dan year divalidasi seperti Bagian 3:
+  title tidak boleh kosong, year >= 2015.
+end note
+@enduml

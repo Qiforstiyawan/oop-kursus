@@ -1,0 +1,156 @@
+@startuml
+!include skin.iuml
+title Diagram Kelas Lengkap (Akhir Bagian 7)
+
+class Main {
+  +{static} main(args : String[]) : void
+}
+
+class AcademyApp {
+  -academy : Academy
+  -in : Scanner
+  -out : PrintStream
+  --
+  +AcademyApp(academy : Academy, in : Scanner, out : PrintStream)
+  +run() : void
+}
+
+class Academy {
+  -name : String
+  -courses : Course[20]
+  -courseCount : int
+  -students : Student[10]
+  -studentCount : int
+  --
+  +Academy(name : String)
+  +getName() : String
+  +addCourse(course : Course) : boolean
+  +addStudent(student : Student) : boolean
+  +getCourses() : Course[]
+  +getStudents() : Student[]
+  +findCourseByTitle(title : String) : Course
+  +findStudent(studentId : String) : Student
+  +searchByKeyword(keyword : String) : Course[]
+  +enroll(studentId : String, title : String) : boolean
+  +drop(studentId : String, title : String) : boolean
+}
+
+class Course {
+  #title : String
+  #year : int
+  -available : boolean
+  -extraWeeks : int
+  --
+  +Course(title : String, year : int)
+  +getTitle() : String
+  +setTitle(title : String) : void
+  +getYear() : int
+  +setYear(year : int) : void
+  +isAvailable() : boolean
+  +takeSeat() : boolean
+  +releaseSeat() : void
+  +durationWeeks() : int
+  +describe() : String
+  +toString() : String
+  +extendEnrollment() : void
+  +extendEnrollment(weeks : int) : void
+  +getTotalWeeks() : int
+}
+
+class OnlineCourse {
+  -code : String
+  -instructor : Instructor
+  --
+  +OnlineCourse(code : String, title : String, year : int)
+  +OnlineCourse(code : String, title : String, year : int, instructor : Instructor)
+  +getCode() : String
+  +getInstructor() : Instructor
+  +setInstructor(instructor : Instructor) : void
+  +durationWeeks() : int
+  +describe() : String
+}
+
+class OfflineCourse {
+  -room : String
+  --
+  +OfflineCourse(title : String, year : int, room : String)
+  +getRoom() : String
+  +durationWeeks() : int
+  +describe() : String
+}
+
+class Workshop {
+  -seats : int
+  --
+  +Workshop(title : String, year : int, seats : int)
+  +Workshop(title : String, year : int)
+  +getSeats() : int
+}
+
+class Instructor {
+  -name : String
+  -expertise : String
+  --
+  +Instructor(name : String, expertise : String)
+  +getName() : String
+  +getExpertise() : String
+  +getInfo() : String
+}
+
+class Student {
+  -studentId : String
+  -name : String
+  -courseCount : int
+  -card : StudentCard
+  --
+  +Student(studentId : String, name : String)
+  +getStudentId() : String
+  +getName() : String
+  +setName(name : String) : void
+  +getCourseCount() : int
+  +getCard() : StudentCard
+  +canEnroll() : boolean
+  +addEnrollment() : boolean
+  +removeEnrollment() : boolean
+}
+
+class StudentCard {
+  -number : String
+  --
+  +StudentCard(number : String)
+  +getNumber() : String
+}
+
+class Classroom {
+  -code : String
+  -courses : OnlineCourse[5]
+  -count : int
+  --
+  +Classroom(code : String)
+  +getCode() : String
+  +getCourseCount() : int
+  +addCourse(course : OnlineCourse) : boolean
+  +findByCode(code : String) : OnlineCourse
+  +countAvailable() : int
+}
+
+class Registrar {
+  --
+  +enroll(student : Student, course : OnlineCourse) : boolean
+  +drop(student : Student, course : OnlineCourse) : boolean
+}
+
+Main ..> Academy
+Main ..> AcademyApp
+AcademyApp --> "1" Academy : asosiasi
+Academy o-- "0..20" Course : agregasi
+Academy o-- "0..10" Student : agregasi
+Course <|-- OnlineCourse
+Course <|-- OfflineCourse
+Course <|-- Workshop
+OnlineCourse "*" --> "0..1" Instructor : asosiasi
+Student "1" *-- "1" StudentCard : komposisi
+Classroom o-- "0..5" OnlineCourse : agregasi
+Registrar ..> Student : dependensi
+Registrar ..> OnlineCourse : dependensi
+@enduml

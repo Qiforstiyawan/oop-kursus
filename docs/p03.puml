@@ -1,0 +1,57 @@
+@startuml
+!include skin.iuml
+title Bagian 3: Enkapsulasi
+
+class Instructor {
+  -name : String
+  -expertise : String
+  --
+  +Instructor(name : String, expertise : String)
+  +getName() : String
+  +getExpertise() : String
+  +getInfo() : String
+}
+
+class OnlineCourse {
+  -code : String
+  -title : String
+  -year : int
+  -available : boolean
+  --
+  +OnlineCourse(code : String, title : String, year : int)
+  +getCode() : String
+  +getTitle() : String
+  +setTitle(title : String) : void
+  +getYear() : int
+  +setYear(year : int) : void
+  +isAvailable() : boolean
+  +takeSeat() : boolean
+  +releaseSeat() : void
+}
+
+class Student {
+  -studentId : String
+  -name : String
+  -courseCount : int
+  --
+  +Student(studentId : String, name : String)
+  +getStudentId() : String
+  +getName() : String
+  +setName(name : String) : void
+  +getCourseCount() : int
+  +canEnroll() : boolean
+  +addEnrollment() : boolean
+  +removeEnrollment() : boolean
+}
+
+note right of OnlineCourse
+  code dan available tidak punya setter.
+  title tidak boleh kosong.
+  year harus 2015 atau lebih.
+end note
+
+note right of Student
+  studentId dan courseCount tidak punya setter.
+  courseCount selalu 0 sampai 3.
+end note
+@enduml
