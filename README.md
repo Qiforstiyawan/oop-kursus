@@ -337,7 +337,7 @@ Struktur:
 - Override: tulis ulang method dengan signature yang sama di subclass, dan tambahkan `@Override` agar compiler membantu memeriksa.
 - Untuk memakai versi parent di dalam override, panggil `super.namaMethod()`.
 - Overload: nama sama, parameter berbeda. Satu versi boleh memanggil versi lain dengan nilai bawaan. Untuk constructor, gunakan `this(...)`.
-- `getTotalWeeks()` memanggil `durationWeeks()`, jadi hasilnya mengikuti objek yang sebenarnya (polymorphism). Kamu butuh satu field private di `Course` untuk menyimpan total perpanjangan.
+- `getTotalWeeks()` memanggil `durationWeeks()`, jadi hasilnya mengikuti objek yang sebenarnya. Kamu butuh satu field private di `Course` untuk menyimpan total perpanjangan.
 - `toString()` cukup mengembalikan `describe()`.
 
 </details>
@@ -471,8 +471,7 @@ Video adalah bukti bahwa kode ini milikmu dan kamu memahaminya. Nilainya sama be
    - enkapsulasi: field `private`, validasi di setter dan constructor, field read-only;
    - empat relasi kelas: asosiasi, agregasi, komposisi, dan dependensi. Bedakan **agregasi dan komposisi dengan menunjuk baris kodenya** (siapa yang membuat objek, dan siapa yang menyimpan);
    - inheritance (`Course` dan tiga subclass);
-   - override dan overload: tunjuk contoh masing-masing di kodemu dan jelaskan bedanya;
-   - polymorphism lewat array parent: tunjukkan array `Course[]` di `Academy` dan jelaskan mengapa `durationWeeks()` bisa berbeda untuk tiap elemen.
+   - override dan overload: tunjuk contoh masing-masing di kodemu dan jelaskan bedanya.
 3. **Demo langsung**: jalankan `mvn test` sampai hasilnya terlihat. Lalu jalankan aplikasi dan peragakan satu alur transaksi lengkap (tambah kursus, daftarkan mahasiswa, `Enroll`, cek status, `Drop`) dan **satu kasus gagal** (misalnya mengambil kursus keempat atau kursus yang kursinya penuh).
 4. **Jawab 3 pertanyaan teori dari bank soal**, satu dari setiap kategori. Dosen mengumumkan bank soal. Nomor soal ditentukan nomor absen (1 sampai 28), bukan NIM:
    - Soal 1 (Konsep dan enkapsulasi), nomor 1 sampai 4 = (bagian bulat dari (nomor absen - 1) / 4) mod 4, lalu + 1.
