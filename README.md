@@ -52,8 +52,8 @@ Gambaran seluruh kelas di akhir latihan ada di ![Diagram kelas lengkap](docs/cla
 
 Pastikan WakaTime aktif.
 
-1. Di GitHub, klik **Use this template**, lalu **Create a new repository**.
-2. Pilih **Private**, lalu ikuti arahan Dosen tentang siapa yang kamu undang.
+1. Buka https://github.com/dhanifudin/oop-kursus, klik **Use this template**, lalu **Create a new repository**.
+2. Pilih **Private**, lalu undang akun GitHub Dosen (`dhanifudin`) sebagai collaborator (**Settings > Collaborators**).
 3. Clone repositori barumu, lalu commit dan push setiap selesai satu bagian.
 4. Buka tab **Actions**. Autograder berjalan di setiap push dan menampilkan nilai kodemu.
 
@@ -462,11 +462,11 @@ Bye
 
 Video adalah bukti bahwa kode ini milikmu dan kamu memahaminya. Nilainya sama besar dengan kode.
 
-**Format**: 10 sampai 15 menit, **wajah dan layar** terlihat (webcam di pojok, layar penuh). Unggah ke YouTube dengan visibilitas **unlisted**. Tempel linknya di `video/LINK.md`, lalu commit dan push.
+**Format**: minimal 10 menit, tanpa batas maksimal, **wajah dan layar** terlihat (webcam di pojok, layar penuh). Unggah ke YouTube dengan visibilitas **unlisted**. Tempel linknya di `video/LINK.md`, lalu commit dan push.
 
 **Isi video**, berurutan:
 
-1. **Pengantar (maksimal 1 menit)**: sebut nama, NIM, dan varian (D, Pendaftaran Kursus).
+1. **Pengantar**: sebut nama, NIM, nomor absen, dan varian (D, Pendaftaran Kursus).
 2. **Telusuri diagram melawan kodemu**: tunjukkan di kodemu
    - enkapsulasi: field `private`, validasi di setter dan constructor, field read-only;
    - empat relasi kelas: asosiasi, agregasi, komposisi, dan dependensi. Bedakan **agregasi dan komposisi dengan menunjuk baris kodenya** (siapa yang membuat objek, dan siapa yang menyimpan);
@@ -474,11 +474,12 @@ Video adalah bukti bahwa kode ini milikmu dan kamu memahaminya. Nilainya sama be
    - override dan overload: tunjuk contoh masing-masing di kodemu dan jelaskan bedanya;
    - polymorphism lewat array parent: tunjukkan array `Course[]` di `Academy` dan jelaskan mengapa `durationWeeks()` bisa berbeda untuk tiap elemen.
 3. **Demo langsung**: jalankan `mvn test` sampai hasilnya terlihat. Lalu jalankan aplikasi dan peragakan satu alur transaksi lengkap (tambah kursus, daftarkan mahasiswa, `Enroll`, cek status, `Drop`) dan **satu kasus gagal** (misalnya mengambil kursus keempat atau kursus yang kursinya penuh).
-4. **Jawab 2 pertanyaan dari bank soal**. Dosen mengumumkan bank soalnya. Nomor soalmu ditentukan NIM:
-   - Soal 1: nomor = (digit terakhir NIM) + 1, hasilnya 1 sampai 10.
-   - Soal 2: nomor = ((dua digit terakhir NIM) mod 10) + 11, hasilnya 11 sampai 20.
-   - Contoh: NIM berakhiran 47 menghasilkan soal 8 dan soal 18.
-5. **Refleksi (maksimal 1 menit)**: bagian mana yang paling sulit dan apa yang kamu pelajari.
+4. **Jawab 3 pertanyaan teori dari bank soal**, satu dari setiap kategori. Dosen mengumumkan bank soal. Nomor soal ditentukan nomor absen (1 sampai 28), bukan NIM:
+   - Soal 1 (Konsep dan enkapsulasi), nomor 1 sampai 4 = (bagian bulat dari (nomor absen - 1) / 4) mod 4, lalu + 1.
+   - Soal 2 (Relasi kelas), nomor 5 sampai 8 = ((nomor absen - 1) mod 4) + 5.
+   - Soal 3 (Inheritance, override, overload), nomor 9 sampai 14 = ((nomor absen - 1) mod 6) + 9.
+   - Contoh: nomor absen 28 memberi soal 3, 8, dan 12.
+5. **Refleksi**: bagian mana yang paling sulit dan apa yang kamu pelajari.
 
 Rubrik video (dari dosen) dibagikan terpisah oleh dosen. Baca rubrik itu sebelum merekam.
 
@@ -490,7 +491,7 @@ Serahkan satu file PDF: `laporan/Laporan_<NIM>_<Nama>.pdf`, contoh `laporan/Lapo
 
 Isi laporan:
 
-1. **Identitas**: nama, NIM, kelas, varian, link repositori GitHub, dan link video.
+1. **Identitas**: nama, NIM, nomor absen, kelas, varian, link repositori GitHub, dan link video.
 2. **Hasil pengujian**: screenshot `mvn test` atau tab Actions yang menampilkan nilai.
 3. **Bukti WakaTime**: screenshot dashboard project `uts-d-kursus` (total waktu dan grafik per hari) dan total jam dalam teks.
 4. **Refleksi**: konsep yang masih membingungkan dan rencana belajarmu.
