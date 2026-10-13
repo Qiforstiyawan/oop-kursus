@@ -37,7 +37,7 @@ class P08AcademyTest {
     }
 
     @Test
-    @DisplayName("addCourse menerima OnlineCourse, OfflineCourse, dan Workshop dalam satu array (polymorphism)")
+    @DisplayName("addCourse menerima OnlineCourse, OfflineCourse, dan Workshop dalam satu array")
     void mixedCourses() throws Throwable {
         Object academy = academy();
         OnlineCourse online = new OnlineCourse("C1", "Java Basics", 2023);

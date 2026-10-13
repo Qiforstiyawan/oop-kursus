@@ -128,7 +128,7 @@ class P06InheritanceTest {
     }
 
     @Test
-    @DisplayName("Objek subclass bisa disimpan sebagai Course (polymorphism)")
+    @DisplayName("Setiap subclass adalah turunan Course (extends)")
     void isInstance() throws Throwable {
         Class<?> course = R.cls("Course");
         assertTrue(course.isInstance(new OnlineCourse("C1", "Java Basics", 2023)));

@@ -8,7 +8,7 @@
 - Pakai array biasa. Jangan pakai `List` atau `ArrayList`.
 - Jangan pakai `System.out.println` di `Academy` dan kelas model. Tampilan hanya di `Main` dan `AcademyApp`.
 - Nyalakan WakaTime setiap kali mengerjakan (lihat Langkah 0).
-- Kerjakan sendiri. Kode, video, dan laporan harus hasil kerjamu. Kamu akan menjelaskan kodemu langsung di video.
+- Kerjakan sendiri tanpa bantuan AI. Jangan memakai AI (chatbot, asisten kode, atau autocomplete berbasis AI) untuk menulis kode, menjawab soal, atau menyusun laporan. Kode, video, dan laporan harus hasil kerjamu, dan kamu menjelaskan kodemu langsung di video. Kode atau laporan salinan tidak dinilai.
 
 ## Langkah 0: Pasang WakaTime (wajib, sebelum menulis kode apa pun)
 
@@ -337,7 +337,7 @@ Struktur:
 - Override: tulis ulang method dengan signature yang sama di subclass, dan tambahkan `@Override` agar compiler membantu memeriksa.
 - Untuk memakai versi parent di dalam override, panggil `super.namaMethod()`.
 - Overload: nama sama, parameter berbeda. Satu versi boleh memanggil versi lain dengan nilai bawaan. Untuk constructor, gunakan `this(...)`.
-- `getTotalWeeks()` memanggil `durationWeeks()`, jadi hasilnya mengikuti objek yang sebenarnya. Kamu butuh satu field private di `Course` untuk menyimpan total perpanjangan.
+- `getTotalWeeks()` memanggil `durationWeeks()`, jadi hasilnya mengikuti objek yang sebenarnya (polymorphism). Kamu butuh satu field private di `Course` untuk menyimpan total perpanjangan.
 - `toString()` cukup mengembalikan `describe()`.
 
 </details>
@@ -494,7 +494,7 @@ Isi laporan:
 2. **Hasil pengujian**: screenshot `mvn test` atau tab Actions yang menampilkan nilai.
 3. **Bukti WakaTime**: screenshot dashboard project `uts-d-kursus` (total waktu dan grafik per hari) dan total jam dalam teks.
 4. **Refleksi**: konsep yang masih membingungkan dan rencana belajarmu.
-5. **Pernyataan kejujuran**: tulis alat bantu yang kamu pakai (termasuk AI, forum, atau bantuan teman) dan untuk apa. Jika tidak memakai apa pun, tulis itu. Tanda tangani pernyataan bahwa kode dan video adalah hasil kerjamu sendiri.
+5. **Pernyataan kejujuran**: tulis bahwa kode, video, dan laporan ini kamu kerjakan sendiri tanpa bantuan AI, forum, atau bantuan teman. Tanda tangani pernyataan bahwa kode dan video adalah hasil kerjamu sendiri.
 
 ## Pengumpulan
 
@@ -510,6 +510,8 @@ Kumpulkan **seluruh repositori**. Sebelum batas waktu, pastikan:
 Kirim link repositori sesuai arahan Dosen.
 
 ## Penilaian
+
+Polymorphism muncul sebagai konsep pengantar di studi kasus, tetapi tidak dinilai (tidak ada di tes, video, maupun bank soal).
 
 | Komponen | Bobot |
 |---|---|
