@@ -1,3 +1,4 @@
+
 package id.ac.polinema.uts.kursus;
 
 /**
@@ -8,16 +9,12 @@ package id.ac.polinema.uts.kursus;
  *
  * Field tidak dideklarasikan di sini: baca diagram kelas di README.
  * Di Bagian 2 field boleh public. Di Bagian 3 kamu akan menutupnya.
- *
- * Kerangka field (lengkapi tipe dan nama dari diagram), letakkan di atas
- * constructor:
- * public ____ name;
- * public ____ expertise;
  */
 public class Instructor {
-    private String name;
-    private String expertise;
+    public String name;
+    public String expertise;
 
+    /** Membuat pengajar dengan nama dan bidang keahlian. */
     public Instructor(String name, String expertise) {
         this.name = name;
         this.expertise = expertise;
@@ -31,6 +28,7 @@ public class Instructor {
         return expertise;
     }
 
+    /** Teks berbentuk "nama (keahlian)". */
     public String getInfo() {
         return name + " (" + expertise + ")";
     }
