@@ -15,7 +15,8 @@ package id.ac.polinema.uts.kursus;
  *   private int courseCount;   // nilai awal 0
  */
 public class Student {
-
+    private String studentId;
+    private String name;
     /**
      * Membuat mahasiswa yang belum mengambil kursus.
      * studentId dan name tidak boleh null atau kosong: lempar

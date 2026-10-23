@@ -1,0 +1,81 @@
+package id.ac.polinema.uts.kursus;
+
+public class Course {
+    protected String title;
+    protected int year;
+    private boolean available;
+    private int extendedWeeks;
+
+    public Course(String title, int year) {
+        setTitle(title);
+        setYear(year);
+        this.available = true;
+        this.extendedWeeks = 0;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setTitle(String title) {
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
+        this.title = title;
+    }
+
+    public void setYear(int year) {
+        if (year < 2015) {
+            throw new IllegalArgumentException("Year must be at least 2015");
+        }
+        this.year = year;
+    }
+
+    public boolean takeSeat() {
+        if (!available) {
+            return false;
+        }
+        available = false;
+        return true;
+    }
+
+    public void releaseSeat() {
+        available = true;
+    }
+
+    public int durationWeeks() {
+        return 2;
+    }
+
+    public String describe() {
+        return title + " (" + year + ")";
+    }
+
+    @Override
+    public String toString() {
+        return describe();
+    }
+
+    public void extendEnrollment() {
+        extendEnrollment(4);
+    }
+
+    public void extendEnrollment(int weeks) {
+        if (weeks <= 0) {
+            throw new IllegalArgumentException("Weeks must be positive");
+        }
+        extendedWeeks += weeks;
+    }
+
+    public int getTotalWeeks() {
+        return durationWeeks() + extendedWeeks;
+    }
+}
