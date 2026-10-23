@@ -16,110 +16,69 @@ package id.ac.polinema.uts.kursus;
  *   public ____ year;
  *   public ____ available;
  */
-public class OnlineCourse {
 
-    /**
-     * Membuat kursus baru yang kursinya masih kosong (tersedia).
-     * Bagian 3: code tidak boleh kosong; title dan year divalidasi seperti setter-nya.
-     */
+/**
+ * Bagian 2 dan 3: kursus online.
+ */
+public class OnlineCourse {
+    private String code;
+    private String title;
+    private int year;
+    private boolean available;
+
     public OnlineCourse(String code, String title, int year) {
-        // TODO Bantuan: isi semua field. Kursus baru: apakah kursinya sudah terisi atau belum?
-        // Bagian 3: aturan validasi judul dan tahun sama dengan setter. Bisakah constructor
-        // memakai setter-nya?
-        //
-        // Kerangka (Bagian 2):
-        //   this.code = code;
-        //   this.title = ____;
-        //   this.year = ____;
-        //   this.available = ____;
-        //
-        // Kerangka (Bagian 3): ganti dua baris title dan year dengan pemanggilan setter.
-        //   setTitle(____);
-        //   setYear(____);
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (code == null || code.isBlank()) {
+            throw new IllegalArgumentException("Code cannot be empty");
+        }
+
+        this.code = code;
+        setTitle(title);
+        setYear(year);
+        this.available = true;
     }
 
     public String getCode() {
-        // TODO Bantuan: kembalikan data yang disimpan constructor.
-        //
-        // Kerangka:
-        //   return ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+        return code;
     }
 
     public String getTitle() {
-        // TODO Bantuan: sama seperti getCode.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return title;
     }
 
     public int getYear() {
-        // TODO Bantuan: sama seperti getCode.
-        throw new UnsupportedOperationException("Not implemented yet");
+        return year;
     }
 
-    /** True jika kursus masih punya kursi kosong. */
     public boolean isAvailable() {
-        // TODO Bantuan: field apa yang menyimpan status kursi?
-        //
-        // Kerangka:
-        //   return ____;
-        throw new UnsupportedOperationException("Not implemented yet");
+        return available;
     }
 
-    /**
-     * Mengisi kursi kursus. Berhasil (true) jika kursus tersedia. Jika kursi
-     * sudah terisi, hasilnya false dan keadaan kursus tidak berubah.
-     */
     public boolean takeSeat() {
-        // TODO Bantuan: apa yang harus kamu periksa lebih dulu sebelum mengubah status?
-        // Method ini punya dua jalur return yang berbeda.
-        //
-        // Kerangka:
-        //   if (____) {
-        //       return false;
-        //   }
-        //   ____ = false;
-        //   return true;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (!available) {
+            return false;
+        }
+
+        available = false;
+        return true;
     }
 
-    /** Mengosongkan kursi: kursus bisa diambil lagi. */
     public void releaseSeat() {
-        // TODO Bantuan: satu baris saja. Status apa yang berubah?
-        //
-        // Kerangka:
-        //   ____ = true;
-        throw new UnsupportedOperationException("Not implemented yet");
+        available = true;
     }
 
-    /**
-     * Bagian 3. Mengubah judul. Judul null, kosong, atau hanya spasi ditolak
-     * dengan IllegalArgumentException, dan judul lama tetap.
-     */
     public void setTitle(String title) {
-        // TODO Bantuan: periksa dulu, baru isi field. Class String punya method untuk
-        // memeriksa teks kosong atau hanya spasi. Jangan lupa kemungkinan null.
-        //
-        // Kerangka:
-        //   if (title == null || ____) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.title = title;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (title == null || title.isBlank()) {
+            throw new IllegalArgumentException("Title cannot be empty");
+        }
+
+        this.title = title;
     }
 
-    /**
-     * Bagian 3. Mengubah tahun. Tahun di bawah 2015 ditolak dengan
-     * IllegalArgumentException, dan tahun lama tetap.
-     */
     public void setYear(int year) {
-        // TODO Bantuan: pola yang sama dengan setTitle. Apa syarat tahun yang valid?
-        //
-        // Kerangka:
-        //   if (year ____ 2015) {
-        //       throw new IllegalArgumentException("____");
-        //   }
-        //   this.year = year;
-        throw new UnsupportedOperationException("Not implemented yet");
+        if (year < 2015) {
+            throw new IllegalArgumentException("Year must be at least 2015");
+        }
+
+        this.year = year;
     }
 }
