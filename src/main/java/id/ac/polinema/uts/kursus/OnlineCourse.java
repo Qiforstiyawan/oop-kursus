@@ -22,67 +22,28 @@ package id.ac.polinema.uts.kursus;
  */
 
 
-public class OnlineCourse {
+
+public class OnlineCourse extends Course {
     private String code;
-    private String title;
-    private int year;
-    private boolean available;
     private Instructor instructor;
 
     public OnlineCourse(String code, String title, int year) {
+        super(title, year);
+
         if (code == null || code.isBlank()) {
             throw new IllegalArgumentException("Code cannot be empty");
         }
 
         this.code = code;
-        setTitle(title);
-        setYear(year);
-        this.available = true;
+    }
+
+    public OnlineCourse(String code, String title, int year, Instructor instructor) {
+        this(code, title, year);
+        this.instructor = instructor;
     }
 
     public String getCode() {
         return code;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
-    public boolean takeSeat() {
-        if (!available) {
-            return false;
-        }
-
-        available = false;
-        return true;
-    }
-
-    public void releaseSeat() {
-        available = true;
-    }
-
-    public void setTitle(String title) {
-        if (title == null || title.isBlank()) {
-            throw new IllegalArgumentException("Title cannot be empty");
-        }
-
-        this.title = title;
-    }
-
-    public void setYear(int year) {
-        if (year < 2015) {
-            throw new IllegalArgumentException("Year must be at least 2015");
-        }
-
-        this.year = year;
     }
 
     public Instructor getInstructor() {
@@ -91,5 +52,16 @@ public class OnlineCourse {
 
     public void setInstructor(Instructor instructor) {
         this.instructor = instructor;
+    }
+
+    @Override
+    public int durationWeeks() {
+        return 6;
+    }
+
+    @Override
+    public String describe() {
+        return super.describe() + " by "
+                + (instructor == null ? "TBA" : instructor.getName());
     }
 }

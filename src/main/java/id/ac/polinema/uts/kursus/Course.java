@@ -4,45 +4,48 @@ public class Course {
     protected String title;
     protected int year;
     private boolean available;
-    private int extendedWeeks;
+    private int extraWeeks;
 
     public Course(String title, int year) {
         setTitle(title);
         setYear(year);
-        this.available = true;
-        this.extendedWeeks = 0;
+        available = true;
+        extraWeeks = 0;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public int getYear() {
-        return year;
-    }
-
-    public boolean isAvailable() {
-        return available;
-    }
-
     public void setTitle(String title) {
         if (title == null || title.isBlank()) {
             throw new IllegalArgumentException("Title cannot be empty");
         }
+
         this.title = title;
+    }
+
+    public int getYear() {
+        return year;
     }
 
     public void setYear(int year) {
         if (year < 2015) {
             throw new IllegalArgumentException("Year must be at least 2015");
         }
+
         this.year = year;
+    }
+
+    public boolean isAvailable() {
+        return available;
     }
 
     public boolean takeSeat() {
         if (!available) {
             return false;
         }
+
         available = false;
         return true;
     }
@@ -72,10 +75,11 @@ public class Course {
         if (weeks <= 0) {
             throw new IllegalArgumentException("Weeks must be positive");
         }
-        extendedWeeks += weeks;
+
+        extraWeeks += weeks;
     }
 
     public int getTotalWeeks() {
-        return durationWeeks() + extendedWeeks;
+        return durationWeeks() + extraWeeks;
     }
 }
