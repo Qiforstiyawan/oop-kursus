@@ -21,11 +21,13 @@ package id.ac.polinema.uts.kursus;
  * Bagian 2 dan 3: kursus online.
  */
 
+
 public class OnlineCourse {
     private String code;
     private String title;
     private int year;
     private boolean available;
+    private Instructor instructor;
 
     public OnlineCourse(String code, String title, int year) {
         if (code == null || code.isBlank()) {
@@ -81,5 +83,13 @@ public class OnlineCourse {
         }
 
         this.year = year;
+    }
+
+    public Instructor getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
     }
 }

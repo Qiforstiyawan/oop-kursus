@@ -10,20 +10,17 @@ package id.ac.polinema.uts.kursus;
  * (semua field harus private).
  *
  * Kerangka field (lengkapi dari diagram), letakkan di atas constructor:
- *   private ____ studentId;
- *   private ____ name;
- *   private int courseCount;   // nilai awal 0
+ * private ____ studentId;
+ * private ____ name;
+ * private int courseCount; // nilai awal 0
  */
+
 public class Student {
     private String studentId;
     private String name;
     private int courseCount;
+    private StudentCard card;
 
-    /**
-     * Membuat mahasiswa yang belum mengambil kursus.
-     * studentId dan name tidak boleh null atau kosong: lempar
-     * IllegalArgumentException jika tidak valid.
-     */
     public Student(String studentId, String name) {
         if (studentId == null || studentId.isBlank()) {
             throw new IllegalArgumentException("Student ID cannot be empty");
@@ -32,6 +29,7 @@ public class Student {
         this.studentId = studentId;
         setName(name);
         this.courseCount = 0;
+        this.card = new StudentCard("SC-" + studentId);
     }
 
     public String getStudentId() {
@@ -42,7 +40,6 @@ public class Student {
         return name;
     }
 
-    /** Nama tidak boleh null atau kosong: lempar IllegalArgumentException dan biarkan nama lama. */
     public void setName(String name) {
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("Name cannot be empty");
@@ -55,12 +52,14 @@ public class Student {
         return courseCount;
     }
 
-    /** True jika mahasiswa masih boleh mengambil kursus (batasnya 3 kursus). */
+    public StudentCard getCard() {
+        return card;
+    }
+
     public boolean canEnroll() {
         return courseCount < 3;
     }
 
-    /** Menambah jumlah kursus. Jika sudah di batas, tidak berubah dan hasilnya false. */
     public boolean addEnrollment() {
         if (!canEnroll()) {
             return false;
@@ -70,9 +69,8 @@ public class Student {
         return true;
     }
 
-    /** Mengurangi jumlah kursus. Jika sudah tidak ada kursus, tidak berubah dan hasilnya false. */
     public boolean removeEnrollment() {
-        if (courseCount == 0) {
+        if (courseCount <= 0) {
             return false;
         }
 
