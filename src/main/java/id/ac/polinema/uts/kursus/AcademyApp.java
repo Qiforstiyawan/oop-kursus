@@ -1,4 +1,3 @@
-
 package id.ac.polinema.uts.kursus;
 
 import java.io.PrintStream;
@@ -20,7 +19,7 @@ public class AcademyApp {
 
         while (running) {
             showMenu();
-            String choice = readLine("Select: ");
+            String choice = readLine("Pilih: ");
 
             if (choice.isEmpty()) {
                 break;
@@ -28,7 +27,7 @@ public class AcademyApp {
 
             switch (choice) {
                 case "1":
-                    showCourses(academy.getCourses(), "No courses");
+                    showCourses(academy.getCourses(), "Belum ada kursus");
                     break;
                 case "2":
                     addOnlineCourse();
@@ -55,11 +54,11 @@ public class AcademyApp {
                     showStudents();
                     break;
                 case "0":
-                    out.println("Bye");
+                    out.println("Keluar");
                     running = false;
                     break;
                 default:
-                    out.println("Invalid option");
+                    out.println("Pilihan tidak valid");
                     break;
             }
         }
@@ -67,16 +66,16 @@ public class AcademyApp {
 
     private void showMenu() {
         out.println("=== " + academy.getName() + " ===");
-        out.println("1. List courses");
-        out.println("2. Add online course");
-        out.println("3. Add offline course");
-        out.println("4. Add workshop");
-        out.println("5. Register student");
-        out.println("6. Enroll student");
-        out.println("7. Drop course");
-        out.println("8. Search courses");
-        out.println("9. List students");
-        out.println("0. Exit");
+        out.println("1. Daftar kursus");
+        out.println("2. Tambah kursus online");
+        out.println("3. Tambah kursus offline");
+        out.println("4. Tambah workshop");
+        out.println("5. Daftarkan mahasiswa");
+        out.println("6. Ikut kursus");
+        out.println("7. Batalkan pendaftaran kursus");
+        out.println("8. Cari kursus");
+        out.println("9. Daftar mahasiswa");
+        out.println("0. Keluar");
     }
 
     private String readLine(String prompt) {
@@ -115,38 +114,38 @@ public class AcademyApp {
             String status;
 
             if (courses[i].isAvailable()) {
-                status = "Open";
+                status = "Tersedia";
             } else {
-                status = "Full";
+                status = "Penuh";
             }
 
             out.println(courses[i].describe() + " | " + status + " | "
-                    + courses[i].durationWeeks() + " weeks");
+                    + courses[i].durationWeeks() + " minggu");
         }
     }
 
     private void addOnlineCourse() {
-        String code = readLine("Code: ");
-        String title = readLine("Title: ");
-        int year = readInt("Year: ");
+        String code = readLine("Kode: ");
+        String title = readLine("Judul: ");
+        int year = readInt("Tahun: ");
 
         if (year < 2015) {
-            out.println("Invalid number");
+            out.println("Angka tidak valid");
             return;
         }
 
         if (code.trim().isEmpty() || title.trim().isEmpty()) {
-            out.println("Invalid input");
+            out.println("Masukan tidak valid");
             return;
         }
 
         String instructorName =
-                readLine("Instructor name (blank for none): ");
+                readLine("Nama pengajar (kosongkan jika tidak ada): ");
 
         Instructor instructor = null;
 
         if (!instructorName.trim().isEmpty()) {
-            String expertise = readLine("Instructor expertise: ");
+            String expertise = readLine("Bidang keahlian pengajar: ");
             instructor = new Instructor(instructorName, expertise);
         }
 
@@ -154,117 +153,118 @@ public class AcademyApp {
                 new OnlineCourse(code, title, year, instructor);
 
         if (academy.addCourse(course)) {
-            out.println("Course added");
+            out.println("Kursus berhasil ditambahkan");
         } else {
-            out.println("Academy is full");
+            out.println("Kapasitas akademi penuh");
         }
     }
 
     private void addOfflineCourse() {
-        String title = readLine("Title: ");
-        int year = readInt("Year: ");
-        String room = readLine("Room: ");
+        String title = readLine("Judul: ");
+        int year = readInt("Tahun: ");
+        String room = readLine("Ruangan: ");
 
         if (year < 2015) {
-            out.println("Invalid number");
+            out.println("Angka tidak valid");
             return;
         }
 
         if (title.trim().isEmpty() || room.trim().isEmpty()) {
-            out.println("Invalid input");
+            out.println("Masukan tidak valid");
             return;
         }
 
         OfflineCourse course = new OfflineCourse(title, year, room);
 
         if (academy.addCourse(course)) {
-            out.println("Course added");
+            out.println("Kursus berhasil ditambahkan");
         } else {
-            out.println("Academy is full");
+            out.println("Kapasitas akademi penuh");
         }
     }
 
     private void addWorkshop() {
-        String title = readLine("Title: ");
-        int year = readInt("Year: ");
-        int seats = readInt("Seats: ");
+        String title = readLine("Judul: ");
+        int year = readInt("Tahun: ");
+        int seats = readInt("Jumlah kursi: ");
 
         if (year < 2015 || seats <= 0) {
-            out.println("Invalid number");
+            out.println("Angka tidak valid");
             return;
         }
 
         if (title.trim().isEmpty()) {
-            out.println("Invalid input");
+            out.println("Masukan tidak valid");
             return;
         }
 
         Workshop workshop = new Workshop(title, year, seats);
 
         if (academy.addCourse(workshop)) {
-            out.println("Course added");
+            out.println("Kursus berhasil ditambahkan");
         } else {
-            out.println("Academy is full");
+            out.println("Kapasitas akademi penuh");
         }
     }
 
     private void registerStudent() {
-        String id = readLine("Student ID: ");
-        String name = readLine("Name: ");
+        String id = readLine("ID mahasiswa: ");
+        String name = readLine("Nama: ");
 
         if (id.trim().isEmpty() || name.trim().isEmpty()) {
-            out.println("Invalid input");
+            out.println("Masukan tidak valid");
             return;
         }
 
         Student student = new Student(id, name);
 
         if (academy.addStudent(student)) {
-            out.println("Student registered");
+            out.println("Mahasiswa berhasil didaftarkan");
         } else {
-            out.println("Student ID already exists");
+            out.println("ID mahasiswa sudah terdaftar atau kapasitas penuh");
         }
     }
 
     private void enrollStudent() {
-        String id = readLine("Student ID: ");
-        String title = readLine("Course title: ");
+        String id = readLine("ID mahasiswa: ");
+        String title = readLine("Judul kursus: ");
 
         if (academy.enroll(id, title)) {
-            out.println("Enrollment successful");
+            out.println("Pendaftaran kursus berhasil");
         } else {
-            out.println("Enrollment failed");
+            out.println("Pendaftaran kursus gagal");
         }
     }
 
     private void dropCourse() {
-        String id = readLine("Student ID: ");
-        String title = readLine("Course title: ");
+        String id = readLine("ID mahasiswa: ");
+        String title = readLine("Judul kursus: ");
 
         if (academy.drop(id, title)) {
-            out.println("Drop successful");
+            out.println("Pembatalan pendaftaran berhasil");
         } else {
-            out.println("Drop failed");
+            out.println("Pembatalan pendaftaran gagal");
         }
     }
 
     private void searchCourses() {
-        String keyword = readLine("Keyword: ");
-        showCourses(academy.searchByKeyword(keyword), "No courses found");
+        String keyword = readLine("Kata kunci: ");
+        showCourses(academy.searchByKeyword(keyword),
+                "Kursus tidak ditemukan");
     }
 
     private void showStudents() {
         Student[] students = academy.getStudents();
 
         if (students.length == 0) {
-            out.println("No students");
+            out.println("Belum ada mahasiswa");
             return;
         }
 
         for (int i = 0; i < students.length; i++) {
             out.println(students[i].getStudentId() + " - "
                     + students[i].getName() + " ("
-                    + students[i].getCourseCount() + " of 3 courses)");
+                    + students[i].getCourseCount() + " dari 3 kursus)");
         }
     }
 }

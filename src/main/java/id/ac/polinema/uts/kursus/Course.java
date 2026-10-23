@@ -19,7 +19,9 @@ public class Course {
 
     public void setTitle(String title) {
         if (title == null || title.isBlank()) {
-            throw new IllegalArgumentException("Title cannot be empty");
+            throw new IllegalArgumentException(
+                    "Judul kursus tidak boleh kosong"
+            );
         }
 
         this.title = title;
@@ -31,7 +33,9 @@ public class Course {
 
     public void setYear(int year) {
         if (year < 2015) {
-            throw new IllegalArgumentException("Year must be at least 2015");
+            throw new IllegalArgumentException(
+                    "Tahun harus minimal 2015"
+            );
         }
 
         this.year = year;
@@ -73,7 +77,9 @@ public class Course {
 
     public void extendEnrollment(int weeks) {
         if (weeks <= 0) {
-            throw new IllegalArgumentException("Weeks must be positive");
+            throw new IllegalArgumentException(
+                    "Jumlah minggu harus lebih dari 0"
+            );
         }
 
         extraWeeks += weeks;

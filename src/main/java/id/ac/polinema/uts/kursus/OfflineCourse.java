@@ -7,7 +7,9 @@ public class OfflineCourse extends Course {
         super(title, year);
 
         if (room == null || room.isBlank()) {
-            throw new IllegalArgumentException("Room cannot be empty");
+            throw new IllegalArgumentException(
+                    "Ruangan tidak boleh kosong"
+            );
         }
 
         this.room = room;
@@ -24,6 +26,6 @@ public class OfflineCourse extends Course {
 
     @Override
     public String describe() {
-        return super.describe() + " [room " + room + "]";
+        return super.describe() + " [ruangan " + room + "]";
     }
 }

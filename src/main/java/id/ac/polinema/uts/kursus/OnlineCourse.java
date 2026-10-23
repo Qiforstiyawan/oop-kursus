@@ -21,8 +21,6 @@ package id.ac.polinema.uts.kursus;
  * Bagian 2 dan 3: kursus online.
  */
 
-
-
 public class OnlineCourse extends Course {
     private String code;
     private Instructor instructor;
@@ -31,7 +29,9 @@ public class OnlineCourse extends Course {
         super(title, year);
 
         if (code == null || code.isBlank()) {
-            throw new IllegalArgumentException("Code cannot be empty");
+            throw new IllegalArgumentException(
+                    "Kode kursus tidak boleh kosong"
+            );
         }
 
         this.code = code;
@@ -61,7 +61,7 @@ public class OnlineCourse extends Course {
 
     @Override
     public String describe() {
-        return super.describe() + " by "
-                + (instructor == null ? "TBA" : instructor.getName());
+        return super.describe() + " oleh "
+                + (instructor == null ? "Belum ditentukan" : instructor.getName());
     }
 }

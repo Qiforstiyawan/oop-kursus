@@ -23,7 +23,9 @@ public class Student {
 
     public Student(String studentId, String name) {
         if (studentId == null || studentId.isBlank()) {
-            throw new IllegalArgumentException("Student ID cannot be empty");
+            throw new IllegalArgumentException(
+                    "ID mahasiswa tidak boleh kosong"
+            );
         }
 
         this.studentId = studentId;
@@ -42,7 +44,9 @@ public class Student {
 
     public void setName(String name) {
         if (name == null || name.isBlank()) {
-            throw new IllegalArgumentException("Name cannot be empty");
+            throw new IllegalArgumentException(
+                    "Nama tidak boleh kosong"
+            );
         }
 
         this.name = name;

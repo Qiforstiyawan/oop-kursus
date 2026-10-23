@@ -7,7 +7,9 @@ public class Workshop extends Course {
         super(title, year);
 
         if (seats <= 0) {
-            throw new IllegalArgumentException("Seats must be positive");
+            throw new IllegalArgumentException(
+                    "Jumlah kursi harus lebih dari 0"
+            );
         }
 
         this.seats = seats;
