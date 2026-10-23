@@ -18,9 +18,13 @@ public class AcademyApp {
     public void run() {
         boolean running = true;
 
-        while (running && in.hasNextLine()) {
+        while (running) {
             showMenu();
             String choice = readLine("Select: ");
+
+            if (choice.isEmpty()) {
+                break;
+            }
 
             switch (choice) {
                 case "1":
