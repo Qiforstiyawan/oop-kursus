@@ -26,6 +26,6 @@ public class OfflineCourse extends Course {
 
     @Override
     public String describe() {
-        return super.describe() + " [ruangan " + room + "]";
+        return super.describe() + " [room " + room + "]";
     }
 }

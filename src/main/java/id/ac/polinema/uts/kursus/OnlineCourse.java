@@ -61,7 +61,7 @@ public class OnlineCourse extends Course {
 
     @Override
     public String describe() {
-        return super.describe() + " oleh "
-                + (instructor == null ? "Belum ditentukan" : instructor.getName());
+        return super.describe() + " by "
+                + (instructor == null ? "TBA" : instructor.getName());
     }
 }
